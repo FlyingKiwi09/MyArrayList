@@ -8,6 +8,7 @@ public class ArrayList<E> implements List<E> {
 	// array
 	private E[] data;
 	private int size = 0;
+
 	
 	// constructor
 	public ArrayList() {
@@ -16,27 +17,6 @@ public class ArrayList<E> implements List<E> {
 	}
 	
 		
-	// auto generated getters and setters
-	public E[] getData() {
-		return data;
-	}
-
-
-	public void setData(E[] data) {
-		this.data = data;
-	}
-
-
-	public int getSize() {
-		return size;
-	}
-
-
-	public void setSize(int size) {
-		this.size = size;
-	}
-
-
 	@Override
 	public int size() {
 		return this.size;
@@ -81,14 +61,26 @@ public class ArrayList<E> implements List<E> {
 	}
 
 	@Override
-	public boolean add(E e) throws UnsupportedOperationException{
-		try {
-			data[size] = e;
-			size++;
-			return true;
-		} catch (Exception ex){
-			throw ex;
+	public boolean add(E e){
+		
+		if (size >= data.length ) {
+			expand();
 		}
+		
+		data[size++] = e;
+		return true;
+		
+	}
+	
+	private void expand() {
+		// make temp array twice as long as current array
+		// copy data from current array to temp array
+		// store temp array to current array
+		E[] tempArray = (E[])new Object[data.length*2];
+		for (int i = 0; i < data.length; i++) {
+			tempArray[i] = data[i];
+		}
+		data = tempArray;
 	}
 
 	@Override
@@ -129,25 +121,22 @@ public class ArrayList<E> implements List<E> {
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
 		data = (E[])new Object[10];
 		this.size = 0;
 	}
 
 	@Override
 	public E get(int index) {
-		if (index < this.size) {
+		if (index >= 0 && index < this.size) {
 			return data[index];
 		} else {
 			throw new IndexOutOfBoundsException();
 		}
-		
 	}
 
 	@Override
 	public E set(int index, E element) {
-		
-		if (data[index]!= null) { // if the index is already set i.e within range
+		if (index >= 0 && index < size) {// if the index is within range
 			E prev = data[index]; // get element that was in that spot
 			data[index] = element; // set new element to that spot
 			return prev; // return element that was in that spot
@@ -158,10 +147,33 @@ public class ArrayList<E> implements List<E> {
 
 	
 	@Override
+	// insert and shift
 	public void add(int index, E element) {
-	
+		if (index >= size || index < 0) {
+			throw new IndexOutOfBoundsException();
+		} 
 		
+		if (size == data.length) {
+			expand();
+		}
+		
+		move(index-1, element);
 	}
+	
+	private void move(int index, E element) {
+		
+		if (data[index] != null) {
+			E next = data[index];
+			move(index+1, next);
+			
+		} else {
+			size++;
+		}
+		
+		data[index] = element;
+	}
+	
+	
 
 	@Override
 	public E remove(int index) {

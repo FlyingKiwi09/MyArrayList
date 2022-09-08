@@ -2,30 +2,28 @@
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		
 		ArrayList<String> list = new ArrayList<String>();
 		
-		list.add("Hello");
-		list.add("World");
-		list.add("again");
 		
+		
+		for (int i = 0; i < 8; i++) {
+			list.add("number" + i);
+		}
+		
+		list.add(5, "Hello");
+		list.add(5, "Hello");
+		list.add(5, "Hello");
+		list.add(5, "Hello");
+		list.add(5, "Hello");
+		list.add(5, "Hello");
+		
+		System.out.println(list.size());
 		
 		for (int i = 0; i < list.size(); i++) {
 			System.out.println(list.get(i));
 		}
 		
-		list.set(2, "change");
-		for (int i = 0; i < list.size(); i++) {
-			System.out.println(list.get(i));
-		}
-		
-		
-		list.clear();
-		System.out.println("After clear");
-		for (int i = 0; i < list.size(); i++) {
-			System.out.println(list.get(i));
-		}
 	}
 
 }
