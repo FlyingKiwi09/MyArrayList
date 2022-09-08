@@ -6,9 +6,11 @@ public class Main {
 		
 		ArrayList<String> list = new ArrayList<String>();
 		
-//		list.add("Hello");
+		list.add("Hello");
 		System.out.println(list.isEmpty());
-
+		System.out.println(list.size());
+		System.out.println(list.contains("Hello"));
+		System.out.println(list.contains("hello"));
 	}
 
 }

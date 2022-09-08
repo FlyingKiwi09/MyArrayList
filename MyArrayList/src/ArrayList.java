@@ -39,8 +39,7 @@ public class ArrayList<E> implements List<E> {
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.size;
 	}
 
 	@Override
@@ -55,7 +54,11 @@ public class ArrayList<E> implements List<E> {
 
 	@Override
 	public boolean contains(Object o) {
-		// TODO Auto-generated method stub
+		for (E e: data) {
+			if (e != null && e.equals(o)) {
+				return true;
+			}
+		}
 		return false;
 	}
 
