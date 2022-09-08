@@ -20,7 +20,9 @@ public class Main {
 			System.out.println(list.get(i));
 		}
 		
-		list.set(4, "back");
+		
+		list.clear();
+		System.out.println("After clear");
 		for (int i = 0; i < list.size(); i++) {
 			System.out.println(list.get(i));
 		}

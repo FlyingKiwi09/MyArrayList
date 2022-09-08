@@ -130,12 +130,18 @@ public class ArrayList<E> implements List<E> {
 	@Override
 	public void clear() {
 		// TODO Auto-generated method stub
-		
+		data = (E[])new Object[10];
+		this.size = 0;
 	}
 
 	@Override
 	public E get(int index) {
-		return data[index];
+		if (index < this.size) {
+			return data[index];
+		} else {
+			throw new IndexOutOfBoundsException();
+		}
+		
 	}
 
 	@Override
