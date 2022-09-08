@@ -7,10 +7,23 @@ public class Main {
 		ArrayList<String> list = new ArrayList<String>();
 		
 		list.add("Hello");
-		System.out.println(list.isEmpty());
-		System.out.println(list.size());
-		System.out.println(list.contains("Hello"));
-		System.out.println(list.contains("hello"));
+		list.add("World");
+		list.add("again");
+		
+		
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println(list.get(i));
+		}
+		
+		list.set(2, "change");
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println(list.get(i));
+		}
+		
+		list.set(4, "back");
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println(list.get(i));
+		}
 	}
 
 }

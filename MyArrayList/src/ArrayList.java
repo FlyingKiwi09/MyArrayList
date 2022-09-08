@@ -135,19 +135,25 @@ public class ArrayList<E> implements List<E> {
 
 	@Override
 	public E get(int index) {
-		// TODO Auto-generated method stub
-		return null;
+		return data[index];
 	}
 
 	@Override
 	public E set(int index, E element) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		
+		if (data[index]!= null) { // if the index is already set i.e within range
+			E prev = data[index]; // get element that was in that spot
+			data[index] = element; // set new element to that spot
+			return prev; // return element that was in that spot
+		} else {
+			throw new IndexOutOfBoundsException();
+		}
+	} 
 
+	
 	@Override
 	public void add(int index, E element) {
-		// TODO Auto-generated method stub
+	
 		
 	}
 
