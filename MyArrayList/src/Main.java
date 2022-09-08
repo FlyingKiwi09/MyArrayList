@@ -11,12 +11,8 @@ public class Main {
 			list.add("number" + i);
 		}
 		
-		list.add(5, "Hello");
-		list.add(5, "Hello");
-		list.add(5, "Hello");
-		list.add(5, "Hello");
-		list.add(5, "Hello");
-		list.add(5, "Hello");
+		list.remove(4);
+
 		
 		System.out.println(list.size());
 		

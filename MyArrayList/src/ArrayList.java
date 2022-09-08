@@ -157,14 +157,14 @@ public class ArrayList<E> implements List<E> {
 			expand();
 		}
 		
-		move(index-1, element);
+		moveUp(index, element);
 	}
 	
-	private void move(int index, E element) {
+	private void moveUp(int index, E element) {
 		
 		if (data[index] != null) {
 			E next = data[index];
-			move(index+1, next);
+			moveUp(index+1, next);
 			
 		} else {
 			size++;
@@ -177,8 +177,24 @@ public class ArrayList<E> implements List<E> {
 
 	@Override
 	public E remove(int index) {
-		// TODO Auto-generated method stub
-		return null;
+		if (index < 0 || index >= size) {
+			throw new IndexOutOfBoundsException();
+		}
+		
+		E removed = data[index];
+		moveDown(index);
+		data[size--] = null;
+
+		return removed;
+	}
+	
+	private void moveDown(int index) {
+		
+		data[index] = data[index+1];
+		
+		if (data[index+1] != null) {
+			moveDown(index+1);
+		}
 	}
 
 	@Override
