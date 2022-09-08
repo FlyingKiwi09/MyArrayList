@@ -5,7 +5,37 @@ import java.util.ListIterator;
 
 public class ArrayList<E> implements List<E> {
 	
+	// array
 	private E[] data;
+	private int size = 0;
+	
+	// constructor
+	public ArrayList() {
+		this.data = (E[])new Object[10];
+		
+	}
+	
+		
+	// auto generated getters and setters
+	public E[] getData() {
+		return data;
+	}
+
+
+	public void setData(E[] data) {
+		this.data = data;
+	}
+
+
+	public int getSize() {
+		return size;
+	}
+
+
+	public void setSize(int size) {
+		this.size = size;
+	}
+
 
 	@Override
 	public int size() {
@@ -15,8 +45,12 @@ public class ArrayList<E> implements List<E> {
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		for (E e: data) {
+			if (e!=null) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	@Override
@@ -44,9 +78,14 @@ public class ArrayList<E> implements List<E> {
 	}
 
 	@Override
-	public boolean add(E e) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean add(E e) throws UnsupportedOperationException{
+		try {
+			data[size] = e;
+			size++;
+			return true;
+		} catch (Exception ex){
+			throw ex;
+		}
 	}
 
 	@Override
