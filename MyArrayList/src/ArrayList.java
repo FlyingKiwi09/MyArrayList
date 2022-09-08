@@ -85,8 +85,19 @@ public class ArrayList<E> implements List<E> {
 
 	@Override
 	public boolean remove(Object o) {
-		// TODO Auto-generated method stub
-		return false;
+		Integer index = null; 
+		boolean found = false;
+		for (int i = 0; i < size; i++) {
+			E e = data[i];
+			if (e != null && e.equals(o)) {
+				index = i;
+				found = true;
+			}
+		}
+		
+		remove((int)index);
+		
+		return found;
 	}
 
 	@Override

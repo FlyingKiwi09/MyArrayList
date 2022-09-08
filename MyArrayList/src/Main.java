@@ -11,7 +11,7 @@ public class Main {
 			list.add("number" + i);
 		}
 		
-		list.remove(4);
+		list.remove("number4");
 
 		
 		System.out.println(list.size());
